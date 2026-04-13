@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="PlaceIQ — Intelligent Placement Navigator for Indian Engineering Students. Check company readiness, identify skill gaps, and get a personalised roadmap." />
+  <meta name="keywords" content="placement preparation, engineering placement, skill gap analysis, campus recruitment, TCS, Infosys, Google, Amazon, roadmap" />
+  <meta name="author" content="PlaceIQ" />
+  <meta property="og:title" content="PlaceIQ — Intelligent Placement Navigator" />
+  <meta property="og:description" content="Skill gap analysis for 40+ companies with personalised roadmaps." />
+  <title>PlaceIQ — Intelligent Placement Navigator</title>
+
+  <!-- Bootstrap 5.3 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <!-- Font Awesome 6 -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+  <!-- Custom CSS -->
+  <link href="css/style.css" rel="stylesheet" />
+</head>
+<body>
+
+<!-- ========== NAVBAR ========== -->
+<nav class="navbar-placeiq">
+  <div class="container-xl d-flex align-items-center justify-content-between">
+    <a href="#" class="navbar-brand-logo text-decoration-none">
+      PlaceIQ
+    </a>
+    <div class="d-flex align-items-center gap-3">
+      <button id="themeToggle" title="Toggle light/dark mode" aria-label="Toggle theme">
+        <i class="fas fa-moon" id="themeIcon"></i>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- ========== HERO SECTION ========== -->
+<section class="hero-section" id="hero">
+  <div class="container-xl py-5">
+    <div class="row align-items-center g-5">
+
+      <!-- Left: Copy -->
+      <div class="col-lg-6">
+        <div class="hero-badge">
+          <i class="fas fa-chart-line"></i>
+          Intelligent Placement Analysis Engine
+        </div>
+        <h1 class="hero-title">
+          Know Your <br/>
+          <span class="gradient-text">Placement Readiness</span><br/>
+          in Minutes
+        </h1>
+        <p class="hero-sub">
+          Compare your skills against 40+ companies, discover your gaps, and get a week-by-week
+          preparation roadmap — completely free.
+        </p>
+        <div class="hero-stats">
+          <div class="stat-item">
+            <div class="stat-number">40+</div>
+            <div class="stat-label">Companies</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">Expert</div>
+            <div class="stat-label">Personalised Advice</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">100%</div>
+            <div class="stat-label">Free</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">4 min</div>
+            <div class="stat-label">Average Time</div>
+          </div>
+        </div>
+        <div class="d-flex gap-3 flex-wrap">
+          <a href="#formSection" class="btn-hero-primary">
+            <i class="fas fa-bolt"></i> Start Analysis
+          </a>
+          <a href="#resultsSection" class="btn-hero-secondary" id="viewResultsBtn" style="display:none!important;">
+            <i class="fas fa-chart-bar"></i> View Results
+          </a>
+        </div>
+      </div>
+
+      <!-- Right: Floating card visual -->
+      <div class="col-lg-6 text-center">
+        <div class="hero-visual">
+          <div class="hero-card-visual">
+            <div class="d-flex align-items-center gap-3 mb-3">
+              <div class="score-badge score-high" style="--pct:80">
+                <span>80%</span>
+              </div>
+              <div>
+                <div style="font-weight:700;font-size:1.05rem;">Amazon</div>
+                <div style="font-size:0.8rem;color:var(--text-muted);">MNC · ₹12–30 LPA</div>
+              </div>
+              <span class="ms-auto confidence-badge conf-strong">Strong</span>
+            </div>
+            <div class="mb-2" style="font-size:0.8rem;color:var(--text-muted);font-weight:600;">MATCHED SKILLS</div>
+            <div class="mb-3">
+              <span class="skill-badge skill-badge-matched">Matched: DSA</span>
+              <span class="skill-badge skill-badge-matched">Matched: Java</span>
+              <span class="skill-badge skill-badge-matched">Matched: AWS</span>
+              <span class="skill-badge skill-badge-matched">Matched: System Design</span>
+            </div>
+            <div class="mb-2" style="font-size:0.8rem;color:var(--text-muted);font-weight:600;">MISSING SKILLS</div>
+            <div class="mb-3">
+              <span class="skill-badge skill-badge-missing">Missing: Leadership Principles</span>
+              <span class="skill-badge skill-badge-missing">Missing: Algorithms</span>
+            </div>
+            <div class="ai-advice-card" style="margin-bottom:0;">
+              <div class="ai-badge"><i class="fas fa-lightbulb"></i> Expert Insight</div>
+              <p style="font-size:0.85rem;color:var(--text-secondary);margin:0;">
+                Focus on Amazon's Leadership Principles — they're assessed in every round. Practice 200+ LeetCode problems to solidify your algorithmic thinking.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== FORM SECTION ========== -->
+<section id="formSection">
+  <div class="container-xl">
+    <div class="section-header">
+      <div class="section-tag">Step-by-Step</div>
+      <h2 class="section-title">Your Placement Profile</h2>
+      <p class="section-sub">Fill in your details and let our system do the heavy lifting.</p>
+    </div>
+
+    <!-- Step indicator -->
+    <div class="step-indicator" id="stepIndicator">
+      <div class="step-dot active" id="step-dot-1">
+        <div class="step-num"><i class="fas fa-user"></i></div>
+        <div class="step-label">Profile</div>
+      </div>
+      <div class="step-line" id="step-line-1"></div>
+      <div class="step-dot" id="step-dot-2">
+        <div class="step-num">2</div>
+        <div class="step-label">Skills</div>
+      </div>
+      <div class="step-line" id="step-line-2"></div>
+      <div class="step-dot" id="step-dot-3">
+        <div class="step-num">3</div>
+        <div class="step-label">Companies</div>
+      </div>
+      <div class="step-line" id="step-line-3"></div>
+      <div class="step-dot" id="step-dot-4">
+        <div class="step-num">4</div>
+        <div class="step-label">Analyse</div>
+      </div>
+    </div>
+
+    <form id="analysisForm" novalidate>
+      <!-- ===== STEP 1: PROFILE ===== -->
+      <div class="form-step active glass-card p-4 p-md-5" id="step1">
+        <h4 class="mb-4" style="font-family:'Space Grotesk',sans-serif;font-weight:700;">
+          <i class="fas fa-user-graduate me-2" style="color:var(--primary)"></i>Your Profile
+        </h4>
+        <div class="row g-3">
+          <div class="col-md-6">
+            <label class="form-label" for="inputName">Full Name</label>
+            <input type="text" id="inputName" class="form-control-custom" placeholder="e.g. Rahul Sharma" required />
+          </div>
+          <div class="col-md-6">
+            <label class="form-label" for="inputEmail">Email Address</label>
+            <input type="email" id="inputEmail" class="form-control-custom" placeholder="rahul@college.edu" />
+          </div>
+          <div class="col-md-6">
+            <label class="form-label" for="inputDomain">Engineering Domain</label>
+            <select id="inputDomain" class="form-control-custom form-select-custom">
+              <option value="">Select branch...</option>
+              <option value="Computer Science">Computer Science (CSE)</option>
+              <option value="Information Technology">Information Technology (IT)</option>
+              <option value="Electronics">Electronics & Communication (ECE)</option>
+              <option value="Electrical">Electrical Engineering (EEE)</option>
+              <option value="Mechanical">Mechanical Engineering</option>
+              <option value="Civil">Civil Engineering</option>
+              <option value="Data Science">Data Science / AI-ML</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+          <div class="col-md-6">
+            <label class="form-label" for="inputExperience">Experience Level</label>
+            <select id="inputExperience" class="form-control-custom form-select-custom">
+              <option value="Fresher">Fresher (0 years)</option>
+              <option value="1 Year">1 Year Experience</option>
+              <option value="2 Years">2 Years Experience</option>
+              <option value="3+ Years">3+ Years Experience</option>
+            </select>
+          </div>
+          <div class="col-md-4">
+            <label class="form-label" for="inputCgpa">CGPA</label>
+            <input type="number" id="inputCgpa" class="form-control-custom" placeholder="8.5" min="1" max="10" step="0.1" />
+          </div>
+          <div class="col-md-4">
+            <label class="form-label" for="inputLocation">Preferred Location</label>
+            <select id="inputLocation" class="form-control-custom form-select-custom">
+              <option value="Pan India">Pan India</option>
+              <option value="Bangalore">Bangalore</option>
+              <option value="Hyderabad">Hyderabad</option>
+              <option value="Pune">Pune</option>
+              <option value="Chennai">Chennai</option>
+              <option value="Mumbai">Mumbai</option>
+              <option value="Delhi NCR">Delhi NCR</option>
+              <option value="Remote">Remote</option>
+            </select>
+          </div>
+          <div class="col-md-4">
+            <label class="form-label" for="inputSalaryMin">Min Expected CTC (LPA)</label>
+            <input type="number" id="inputSalaryMin" class="form-control-custom" placeholder="e.g. 6" min="0" max="100" />
+          </div>
+          <div class="col-12">
+            <label class="form-label">Interview Preparation Time</label>
+            <div class="range-wrapper">
+              <input type="range" class="custom-range" id="weeksSlider" min="1" max="12" value="4"
+                oninput="document.getElementById('weeksVal').textContent=this.value;this.style.setProperty('--val',((this.value-1)/(12-1)*100)+'%')" />
+              <div class="range-labels">
+                <span class="range-label">1 Week</span>
+                <span class="range-label" style="color:var(--secondary);font-weight:700;">
+                  <span id="weeksVal">4</span> Weeks
+                </span>
+                <span class="range-label">12 Weeks</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="d-flex justify-content-end mt-4">
+          <button type="button" class="btn-action btn-primary-gradient" onclick="goToStep(2)">
+            Next: Skills <i class="fas fa-arrow-right"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- ===== STEP 2: SKILLS ===== -->
+      <div class="form-step glass-card p-4 p-md-5" id="step2">
+        <h4 class="mb-4" style="font-family:'Space Grotesk',sans-serif;font-weight:700;">
+          <i class="fas fa-code me-2" style="color:var(--secondary)"></i>Your Skills
+        </h4>
+
+        <!-- Skill tag input -->
+        <div class="mb-4">
+          <label class="form-label">Type your skills (press Enter or comma to add)</label>
+          <div class="skill-tags-container" id="skillTagsContainer" onclick="document.getElementById('skillTagInput').focus()">
+            <input type="text" id="skillTagInput" class="tag-input" placeholder="e.g. Java, DSA, React..." />
+          </div>
+          <div class="mt-2" style="font-size:0.8rem;color:var(--text-muted);">
+            Common skills:
+            <span class="quick-skills">
+              <button type="button" class="skill-quick-btn" onclick="addQuickSkill('DSA')">DSA</button>
+              <button type="button" class="skill-quick-btn" onclick="addQuickSkill('Java')">Java</button>
+              <button type="button" class="skill-quick-btn" onclick="addQuickSkill('Python')">Python</button>
+              <button type="button" class="skill-quick-btn" onclick="addQuickSkill('SQL')">SQL</button>
+              <button type="button" class="skill-quick-btn" onclick="addQuickSkill('React')">React</button>
+              <button type="button" class="skill-quick-btn" onclick="addQuickSkill('System Design')">System Design</button>
+              <button type="button" class="skill-quick-btn" onclick="addQuickSkill('AWS')">AWS</button>
+              <button type="button" class="skill-quick-btn" onclick="addQuickSkill('OOPs')">OOPs</button>
+              <button type="button" class="skill-quick-btn" onclick="addQuickSkill('Git')">Git</button>
+              <button type="button" class="skill-quick-btn" onclick="addQuickSkill('Communication')">Communication</button>
+            </span>
+          </div>
+        </div>
+
+        <div class="text-center my-3" style="color:var(--text-muted);font-size:0.85rem;">
+          — OR paste your resume/LinkedIn summary below for auto-detection —
+        </div>
+
+        <div class="mb-4">
+          <label class="form-label" for="inputResumeText">Resume Text (Optional)</label>
+          <textarea id="inputResumeText" class="form-control-custom" rows="6"
+            placeholder="Paste your resume content or LinkedIn About section here. Our system will extract skills automatically...&#10;&#10;Example:&#10;B.Tech CSE graduate with 8.4 CGPA. Proficient in Java, Spring Boot, React, MySQL, Docker. Experience with REST APIs, microservices architecture. Familiar with AWS S3 and EC2. Good DSA skills with 200+ LeetCode problems solved. Participated in college hackathons."></textarea>
+        </div>
+
+        <div class="d-flex justify-content-between mt-4">
+          <button type="button" class="btn-action btn-outline" onclick="goToStep(1)">
+            <i class="fas fa-arrow-left"></i> Back
+          </button>
+          <button type="button" class="btn-action btn-primary-gradient" onclick="goToStep(3)">
+            Next: Companies <i class="fas fa-arrow-right"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- ===== STEP 3: COMPANIES ===== -->
+      <div class="form-step glass-card p-4 p-md-5" id="step3">
+        <div class="d-flex align-items-center justify-content-between mb-4 flex-wrap gap-2">
+          <h4 style="font-family:'Space Grotesk',sans-serif;font-weight:700;margin:0;">
+            <i class="fas fa-building me-2" style="color:var(--warning)"></i>Target Companies
+          </h4>
+          <div class="d-flex gap-2 flex-wrap">
+            <button type="button" class="btn-action btn-outline" style="padding:0.4rem 1rem;font-size:0.8rem;" onclick="selectAllCompanies(true)">
+              <i class="fas fa-check-double"></i> All
+            </button>
+            <button type="button" class="btn-action btn-outline" style="padding:0.4rem 1rem;font-size:0.8rem;" onclick="selectAllCompanies(false)">
+              <i class="fas fa-times"></i> None
+            </button>
+          </div>
+        </div>
+
+        <!-- Category Filters -->
+        <div class="d-flex gap-2 mb-3 flex-wrap">
+          <button type="button" class="category-filter-btn active" data-cat="all" onclick="filterCompanies('all',this)">All</button>
+          <button type="button" class="category-filter-btn" data-cat="Service" onclick="filterCompanies('Service',this)">Service</button>
+          <button type="button" class="category-filter-btn" data-cat="Product" onclick="filterCompanies('Product',this)">Product</button>
+          <button type="button" class="category-filter-btn" data-cat="MNC" onclick="filterCompanies('MNC',this)">MNC</button>
+          <button type="button" class="category-filter-btn" data-cat="Startup" onclick="filterCompanies('Startup',this)">Startup</button>
+        </div>
+
+        <div class="company-grid" id="companyGrid">
+          <!-- Populated by JS from API -->
+        </div>
+
+        <div id="companyLoadError" class="text-center py-3" style="display:none;color:var(--text-muted);font-size:0.9rem;">
+          <i class="fas fa-server me-2"></i>
+          Backend not connected — using default company list. <a href="#" onclick="loadCompanies();return false;">Retry</a>
+        </div>
+
+        <div class="d-flex justify-content-between mt-4">
+          <button type="button" class="btn-action btn-outline" onclick="goToStep(2)">
+            <i class="fas fa-arrow-left"></i> Back
+          </button>
+          <button type="button" class="btn-action btn-primary-gradient" onclick="goToStep(4)">
+            Review & Analyse <i class="fas fa-arrow-right"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- ===== STEP 4: CONFIRM & ANALYSE ===== -->
+      <div class="form-step glass-card p-4 p-md-5" id="step4">
+        <h4 class="mb-4" style="font-family:'Space Grotesk',sans-serif;font-weight:700;">
+          <i class="fas fa-rocket me-2" style="color:var(--accent)"></i>Review & Launch Analysis
+        </h4>
+
+        <!-- Summary cards -->
+        <div class="row g-3 mb-4" id="summaryCards">
+          <div class="col-md-4">
+            <div class="glass-card-inner">
+              <div style="font-size:0.75rem;color:var(--text-muted);font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:0.4rem;">PROFILE</div>
+              <div id="reviewName" style="font-weight:700;font-size:1.05rem;"></div>
+              <div id="reviewDomain" style="font-size:0.85rem;color:var(--text-secondary);"></div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="glass-card-inner">
+              <div style="font-size:0.75rem;color:var(--text-muted);font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:0.4rem;">SKILLS ADDED</div>
+              <div id="reviewSkillCount" style="font-weight:700;font-size:1.8rem;background:var(--gradient-primary);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;"></div>
+              <div style="font-size:0.85rem;color:var(--text-secondary);">Skills detected</div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="glass-card-inner">
+              <div style="font-size:0.75rem;color:var(--text-muted);font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:0.4rem;">COMPANIES</div>
+              <div id="reviewCompanyCount" style="font-weight:700;font-size:1.8rem;background:var(--gradient-primary);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;"></div>
+              <div style="font-size:0.85rem;color:var(--text-secondary);">selected for analysis</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="text-center py-2">
+          <p style="color:var(--text-muted);font-size:0.9rem;" class="mb-4">
+            <i class="fas fa-info-circle me-1"></i>
+            Analysis takes 20–60 seconds depending on number of companies selected.
+          </p>
+          <button type="button" class="btn-analyse" id="analyseBtn" onclick="submitAnalysis()">
+            <i class="fas fa-search"></i>
+            Analyse My Placement Readiness
+            <i class="fas fa-arrow-right"></i>
+          </button>
+        </div>
+
+        <div class="d-flex justify-content-start mt-4">
+          <button type="button" class="btn-action btn-outline" onclick="goToStep(3)">
+            <i class="fas fa-arrow-left"></i> Back
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</section>
+
+<!-- ========== LOADING SECTION ========== -->
+<section id="loadingSection">
+  <div class="container-xl">
+    <div class="loading-orb">
+      <i class="fas fa-brain"></i>
+    </div>
+    <div class="loading-text" id="loadingText">Analysing your profile...</div>
+    <div class="loading-sub" id="loadingSubText">Computing skill gaps against company requirements</div>
+    <div class="mt-4 d-flex justify-content-center gap-2 flex-wrap" id="loadingCompanyNames">
+      <!-- Company names appear here -->
+    </div>
+  </div>
+</section>
+
+<!-- ========== RESULTS SECTION ========== -->
+<section id="resultsSection">
+  <div class="container-xl">
+
+    <!-- Header -->
+    <div class="d-flex align-items-center justify-content-between mb-5 flex-wrap gap-3">
+      <div>
+        <div class="section-tag">Analysis Complete</div>
+        <h2 class="section-title mb-1">Your Placement Report</h2>
+        <p style="color:var(--text-muted);font-size:0.9rem;" id="resultsSubtitle">for <strong id="resultStudentName"></strong></p>
+      </div>
+      <div class="d-flex gap-2 flex-wrap">
+        <button class="btn-action btn-outline" style="font-size:0.82rem;" onclick="openCompareModal()">
+          <i class="fas fa-balance-scale me-1"></i> Compare
+        </button>
+        <button class="btn-action btn-outline" style="font-size:0.82rem;" onclick="openMockInterview()">
+          <i class="fas fa-comments me-1"></i> Mock Interview
+        </button>
+        <button class="btn-action btn-outline" style="font-size:0.82rem;" onclick="startOver()">
+          <i class="fas fa-redo me-1"></i> New Analysis
+        </button>
+      </div>
+    </div>
+
+    <!-- Overview stats -->
+    <div class="results-overview glass-card mb-4">
+      <div class="row text-center">
+        <div class="col-6 col-md-3">
+          <div class="overview-stat">
+            <span class="overview-num" id="ov-companies">0</span>
+            <span class="overview-label">Companies Analysed</span>
+          </div>
+        </div>
+        <div class="col-6 col-md-3">
+          <div class="overview-stat">
+            <span class="overview-num" id="ov-avg-score">0%</span>
+            <span class="overview-label">Average Match Score</span>
+          </div>
+        </div>
+        <div class="col-6 col-md-3">
+          <div class="overview-stat">
+            <span class="overview-num" id="ov-strong">0</span>
+            <span class="overview-label">Strong Matches (≥70%)</span>
+          </div>
+        </div>
+        <div class="col-6 col-md-3">
+          <div class="overview-stat">
+            <span class="overview-num" id="ov-skills">0</span>
+            <span class="overview-label">Skills Detected</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Detected Skills -->
+    <div class="glass-card p-4 mb-4 skills-detected-row">
+      <h5 style="font-family:'Playfair Display','Times New Roman',Georgia,serif;font-weight:700;margin-bottom:1rem;">
+        <i class="fas fa-check-circle me-2" style="color:var(--secondary)"></i>
+        Detected Skills
+      </h5>
+      <div id="detectedSkillsBadges"></div>
+    </div>
+
+    <!-- Company Match Bar Chart -->
+    <div class="glass-card p-4 mb-4">
+      <h5 style="font-family:'Space Grotesk',sans-serif;font-weight:700;margin-bottom:1rem;">
+        <i class="fas fa-chart-bar me-2" style="color:var(--primary)"></i>
+        Company Match Overview
+      </h5>
+      <div class="chart-container">
+        <canvas id="overviewBarChart"></canvas>
+      </div>
+    </div>
+
+    <!-- Company Accordion Cards -->
+    <div id="companyCardsContainer"></div>
+
+  </div>
+</section>
+
+<!-- ========== PROGRESS TRACKER ========== -->
+<section id="progressPanel" style="display:none;">
+  <div class="container-xl">
+    <div class="section-header">
+      <div class="section-tag">Track Progress</div>
+      <h2 class="section-title">Skill Progress Tracker</h2>
+      <p class="section-sub">Check off skills as you learn them. Your score updates live.</p>
+    </div>
+
+    <div class="glass-card p-4">
+      <div class="d-flex align-items-center justify-content-between mb-3 flex-wrap gap-2">
+        <div>
+          <span style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.1rem;">Overall Progress</span>
+        </div>
+        <div style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.5rem;color:var(--secondary);">
+          <span id="progressPercent">0</span>%
+        </div>
+      </div>
+      <div class="progress-overall-bar">
+        <div class="progress-fill progress-fill-green" id="progressBar" style="width:0%"></div>
+      </div>
+      <div class="mt-3" id="progressSkillList"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== GENERAL RESOURCES ========== -->
+<section id="resourcesSection">
+  <div class="container-xl">
+    <div class="section-header">
+      <div class="section-tag">Resources</div>
+      <h2 class="section-title">Prepare Smarter</h2>
+      <p class="section-sub">Curated resources to boost your placement preparation.</p>
+    </div>
+
+    <div class="row g-3">
+      <div class="col-6 col-md-4 col-lg-2">
+        <a href="https://leetcode.com" target="_blank" class="resource-card">
+          <span class="resource-icon"><i class="fas fa-code"></i></span>
+          <div class="resource-title">LeetCode</div>
+          <div class="resource-desc">DSA Practice</div>
+        </a>
+      </div>
+      <div class="col-6 col-md-4 col-lg-2">
+        <a href="https://www.geeksforgeeks.org/company-interview-corner/" target="_blank" class="resource-card">
+          <span class="resource-icon"><i class="fas fa-bullseye"></i></span>
+          <div class="resource-title">GeeksforGeeks</div>
+          <div class="resource-desc">Interview Prep</div>
+        </a>
+      </div>
+      <div class="col-6 col-md-4 col-lg-2">
+        <a href="https://www.interviewbit.com" target="_blank" class="resource-card">
+          <span class="resource-icon"><i class="fas fa-bolt"></i></span>
+          <div class="resource-title">InterviewBit</div>
+          <div class="resource-desc">Structured Prep</div>
+        </a>
+      </div>
+      <div class="col-6 col-md-4 col-lg-2">
+        <a href="https://www.hackerrank.com" target="_blank" class="resource-card">
+          <span class="resource-icon"><i class="fas fa-laptop-code"></i></span>
+          <div class="resource-title">HackerRank</div>
+          <div class="resource-desc">Coding Challenges</div>
+        </a>
+      </div>
+      <div class="col-6 col-md-4 col-lg-2">
+        <a href="https://aistudio.google.com" target="_blank" class="resource-card">
+          <span class="resource-icon"><i class="fas fa-brain"></i></span>
+          <div class="resource-title">AI Studio</div>
+          <div class="resource-desc">Free Gemini API</div>
+        </a>
+      </div>
+      <div class="col-6 col-md-4 col-lg-2">
+        <a href="https://www.pramp.com" target="_blank" class="resource-card">
+          <span class="resource-icon"><i class="fas fa-microphone"></i></span>
+          <div class="resource-title">Pramp</div>
+          <div class="resource-desc">Mock Interviews</div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== FOOTER ========== -->
+<footer class="footer-iq">
+  <div class="container-xl">
+    <div class="footer-brand">PlaceIQ</div>
+    <div class="mt-1">Intelligent Placement Navigator for Indian Engineering Students</div>
+    <div class="mt-2" style="font-size:0.78rem;">
+      Built with ❤️ using Spring Boot · Bootstrap 5 · Chart.js
+    </div>
+  </div>
+</footer>
+
+<!-- ========== MODALS ========== -->
+
+<!-- Salary Negotiation Simulator -->
+<div class="modal-custom" id="salaryModal">
+  <div class="modal-panel">
+    <button class="modal-close" onclick="closeSalaryModal()"><i class="fas fa-times"></i></button>
+    <div class="modal-title">
+      <i class="fas fa-sack-dollar me-2" style="color:var(--secondary)"></i>
+      Salary Negotiation Simulator
+    </div>
+    <div class="mb-3">
+      <label class="form-label" for="salaryCompanyInput">Company</label>
+      <select id="salaryCompanyInput" class="form-control-custom form-select-custom">
+        <option value="">Select company...</option>
+      </select>
+    </div>
+    <div class="mb-3">
+      <label class="form-label" for="salaryRoleInput">Role</label>
+      <input type="text" id="salaryRoleInput" class="form-control-custom" placeholder="e.g. Software Engineer" value="Software Engineer" />
+    </div>
+    <div class="mb-3">
+      <label class="form-label" for="salaryOfferInput">Offered Salary (LPA)</label>
+      <input type="number" id="salaryOfferInput" class="form-control-custom" placeholder="e.g. 6.5" min="1" step="0.5" />
+    </div>
+    <button class="btn-action btn-primary-gradient w-100" onclick="getSalaryAdvice()">
+      <i class="fas fa-chart-bar"></i> Get Personalised Advice
+    </button>
+    <div class="salary-result-box" id="salaryResultBox">
+      <div id="salaryRecommend"></div>
+      <p id="salaryAdviceText" style="font-size:0.9rem;color:var(--text-secondary);margin-bottom:0.5rem;"></p>
+      <div style="font-size:0.85rem;color:var(--text-muted);">
+        Suggested counter offer: <span id="salaryCounterOffer" style="color:var(--secondary);font-weight:700;"></span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Mock Interview Randomiser -->
+<div class="modal-custom" id="mockInterviewModal">
+  <div class="modal-panel">
+    <button class="modal-close" onclick="closeMockInterview()"><i class="fas fa-times"></i></button>
+    <div class="modal-title">
+      <i class="fas fa-comments me-2" style="color:var(--primary)"></i>
+      Mock Interview Randomiser
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Topic Filter</label>
+      <div class="d-flex gap-2 flex-wrap" id="mockTopicFilter">
+        <button type="button" class="category-filter-btn active" onclick="filterMockTopic('all',this)">All</button>
+        <button type="button" class="category-filter-btn" onclick="filterMockTopic('dsa',this)">DSA</button>
+        <button type="button" class="category-filter-btn" onclick="filterMockTopic('oop',this)">OOP</button>
+        <button type="button" class="category-filter-btn" onclick="filterMockTopic('system',this)">System Design</button>
+        <button type="button" class="category-filter-btn" onclick="filterMockTopic('hr',this)">HR</button>
+        <button type="button" class="category-filter-btn" onclick="filterMockTopic('sql',this)">SQL</button>
+        <button type="button" class="category-filter-btn" onclick="filterMockTopic('os',this)">OS/Networks</button>
+      </div>
+    </div>
+    <div class="question-card-modal" id="mockQuestion">
+      Click "Next Question" to start your mock interview!
+    </div>
+    <div class="interview-timer" id="interviewTimer">02:00</div>
+    <div class="d-flex gap-2 mb-3">
+      <button class="btn-action btn-primary-gradient flex-fill" onclick="nextMockQuestion()">
+        <i class="fas fa-dice"></i> Next Question
+      </button>
+      <button class="btn-action btn-outline" onclick="toggleTimer()">
+        <i class="fas fa-clock" id="timerIcon"></i> Timer
+      </button>
+    </div>
+    <div class="d-flex justify-content-between" style="font-size:0.8rem;color:var(--text-muted);">
+      <span>Question <span id="qNum">0</span> of session</span>
+      <span id="mockTopicLabel" style="color:var(--primary-light);font-weight:600;"></span>
+    </div>
+  </div>
+</div>
+
+<!-- Company Comparison Modal -->
+<div class="modal-custom" id="compareModal">
+  <div class="modal-panel" style="max-width:800px">
+    <button class="modal-close" onclick="document.getElementById('compareModal').classList.remove('open')"><i class="fas fa-times"></i></button>
+    <div class="modal-title">
+      <i class="fas fa-balance-scale me-2" style="color:var(--accent)"></i>
+      Company Comparison
+    </div>
+    <p style="color:var(--text-muted);font-size:0.85rem;margin-bottom:1.5rem;">
+      Select 2–4 companies to compare side by side. Click the 📊 Compare button on each company card.
+    </p>
+    <div class="compare-radar-grid" id="compareRadarGrid">
+      <div style="text-align:center;color:var(--text-muted);padding:2rem;grid-column:1/-1;">
+        No companies selected yet. Click "📊 Compare" on company cards to add them here.
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Toast -->
+<div id="toast"></div>
+
+<!-- Floating Action Buttons -->
+<div class="fab-group" id="fabGroup" style="display:none;">
+  <button class="fab-btn fab-pdf" onclick="exportPDF()" title="Export PDF">
+    <i class="fas fa-file-pdf"></i>
+    <span class="fab-tooltip">Export PDF</span>
+  </button>
+  <button class="fab-btn fab-share" onclick="shareResults()" title="Share Results">
+    <i class="fas fa-share-alt"></i>
+    <span class="fab-tooltip">Share Results</span>
+  </button>
+  <button class="fab-btn fab-copy" onclick="copyResults()" title="Copy Summary">
+    <i class="fas fa-copy"></i>
+    <span class="fab-tooltip">Copy Summary</span>
+  </button>
+  <button class="fab-btn fab-mock" onclick="openMockInterview()" title="Mock Interview">
+    <i class="fas fa-brain"></i>
+    <span class="fab-tooltip">Mock Interview</span>
+  </button>
+</div>
+
+<!-- Bootstrap 5 JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<!-- App JS -->
+<script src="js/app.js"></script>
+
+<style>
+/* Inline extras not fitting in style.css cleanly */
+.skill-quick-btn {
+  background: rgba(102,126,234,0.1);
+  border: 1px solid rgba(102,126,234,0.22);
+  color: #8BA7F5;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.2rem 0.7rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s;
+  margin: 0.15rem;
+  font-family: 'Lora', Georgia, 'Times New Roman', serif;
+}
+.skill-quick-btn:hover {
+  background: rgba(102,126,234,0.22);
+  border-color: #667eea;
+}
+.category-filter-btn {
+  background: rgba(15,15,35,0.4);
+  border: 1px solid rgba(102,126,234,0.18);
+  color: var(--text-secondary);
+  padding: 0.35rem 1rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  font-family: 'Lora', Georgia, 'Times New Roman', serif;
+}
+.category-filter-btn.active, .category-filter-btn:hover {
+  background: rgba(102,126,234,0.18);
+  border-color: #667eea;
+  color: #8BA7F5;
+}
+</style>
+</body>
+</html>
