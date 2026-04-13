@@ -7,7 +7,7 @@
 // ============================================================
 // CONFIGURATION — Update BASE_URL to your Railway URL for prod
 // ============================================================
-const BASE_URL = ''; // Empty = same origin (served from localhost:8080)
+const BASE_URL = 'https://placeguide-production.up.railway.app'; // Production Railway URL
 
 // ============================================================
 // GLOBAL STATE
